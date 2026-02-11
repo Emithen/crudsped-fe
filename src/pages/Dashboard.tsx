@@ -58,7 +58,7 @@ export const DashboardPage = () => {
       <CreatePostForm submitPost={submitPost} />
 
       {/* Post List */}
-      <div className="mt-10 flex min-h-0 w-full flex-1 flex-col items-center gap-4 rounded-md border border-gray-300 p-4">
+      <div className="mt-10 flex min-h-0 w-full flex-1 flex-col items-center gap-4 overflow-y-auto rounded-md border border-gray-300 p-4">
         <div className="flex w-full justify-between text-2xl font-bold">
           <div>Posts</div>
         </div>
