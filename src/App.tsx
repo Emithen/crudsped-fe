@@ -24,7 +24,7 @@ function App() {
     <>
       <div>App Component</div>
       {posts.map((post) => (
-        <div key={post.id}>
+        <div key={post.id} className="p-4 border border-gray-300 rounded-md">
           <div>{post.title}</div>
           <div>{post.author_id}</div>
           <div>{post.content}</div>
