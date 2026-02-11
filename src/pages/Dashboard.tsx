@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { logout } from "../api/auth";
-import { getPosts, type Post } from "../api/post.api";
+import { createPost, getPosts, type Post } from "../api/post.api";
+import CreatePostForm from "../components/CreatePostForm";
 
 export const DashboardPage = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -8,6 +9,14 @@ export const DashboardPage = () => {
   const handleLogout = async () => {
     try {
       await logout();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const submitPost = async (title: string, content: string) => {
+    try {
+      await createPost(title, content);
     } catch (error) {
       console.error(error);
     }
@@ -34,6 +43,7 @@ export const DashboardPage = () => {
 
   return (
     <div className="flex h-screen w-full flex-col items-center">
+      {/* Header */}
       <div className="mt-10 flex w-full items-center justify-between px-10">
         <div className="text-2xl font-bold">Dashboard</div>
         <button
@@ -44,7 +54,14 @@ export const DashboardPage = () => {
         </button>
       </div>
 
-      <div className="mt-10 flex w-full flex-col items-center gap-4">
+      {/* Create Post Form */}
+      <CreatePostForm submitPost={submitPost} />
+
+      {/* Post List */}
+      <div className="mt-10 flex w-full flex-col items-center gap-4 rounded-md border border-gray-300 p-4">
+        <div className="flex w-full justify-between text-2xl font-bold">
+          <div>Posts</div>
+        </div>
         {posts.map((post) => (
           <div
             key={post.id}
