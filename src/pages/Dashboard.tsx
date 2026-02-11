@@ -17,6 +17,8 @@ export const DashboardPage = () => {
   const submitPost = async (title: string, content: string) => {
     try {
       await createPost(title, content);
+      const data = await getPosts();
+      setPosts(data);
     } catch (error) {
       console.error(error);
     }
