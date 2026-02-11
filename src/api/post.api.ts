@@ -1,6 +1,6 @@
 import { instance } from "./axios";
 
-export const getPosts = async () : Promise<Post[]> => {
+export const getPosts = async (): Promise<Post[]> => {
   try {
     const res = await instance.get("/posts");
     return res.data;
@@ -8,7 +8,7 @@ export const getPosts = async () : Promise<Post[]> => {
     console.log(err);
     throw err;
   }
-}
+};
 
 export type Post = {
   id: string;
@@ -16,4 +16,4 @@ export type Post = {
   title: string;
   content: string;
   created_at: string;
-}
+};

@@ -24,7 +24,10 @@ function App() {
     <>
       <div>App Component</div>
       {posts.map((post) => (
-        <div key={post.id} className="p-4 border border-gray-300 rounded-md">
+        <div
+          key={post.id}
+          className="flex flex-col rounded-md border border-gray-300 p-4"
+        >
           <div>{post.title}</div>
           <div>{post.author_id}</div>
           <div>{post.content}</div>
